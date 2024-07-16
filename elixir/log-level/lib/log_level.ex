@@ -9,12 +9,16 @@ defmodule LogLevel do
       level == 5 and !legacy? -> :fatal
       true -> :unknown
     end
-    # Please implement the to_label/2 function
   end
 
-  # def alert_recipient(level, legacy?) do
-  #   # Please implement the alert_recipient/2 function
-  # end
+  def alert_recipient(level, legacy?) do
+    cond do
+      to_label(level, legacy?) == :error or to_label(level, legacy?) == :fatal -> :ops
+      to_label(level, legacy?) == :unknown && legacy? -> :dev1
+      to_label(level, legacy?) == :unknown && !legacy? -> :dev2
+      false or true -> :false
+    end
+  end
 end
 
 # trace
@@ -44,3 +48,9 @@ IO.puts("#{LogLevel.to_label(5, true)}\n")
 # unknown
 IO.puts(LogLevel.to_label(7, false))
 IO.puts("#{LogLevel.to_label(8, true)}\n")
+
+IO.puts("#{LogLevel.alert_recipient(5, false)} == ops")
+IO.puts("#{LogLevel.alert_recipient(4, false)} == ops")
+IO.puts("#{LogLevel.alert_recipient(7, true)} == dev1")
+IO.puts("#{LogLevel.alert_recipient(7, false)} == dev2")
+IO.puts("#{LogLevel.alert_recipient(0, false)} == false")
