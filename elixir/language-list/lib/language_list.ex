@@ -1,6 +1,6 @@
 defmodule LanguageList do
   def new() do
-    empty_list = []
+    _empty_list = []
   end
 
   def add(list, language) do
@@ -16,7 +16,7 @@ defmodule LanguageList do
   end
 
   def count(list) do
-    size = length(list)
+    _size = length(list)
   end
 
   def functional_list?(list) do
