@@ -18,4 +18,3 @@ defmodule GuessingGame do
     "Too low"
   end
 end
-
