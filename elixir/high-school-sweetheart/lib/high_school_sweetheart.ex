@@ -1,32 +1,36 @@
 defmodule HighSchoolSweetheart do
   def first_letter(name) do
-    # Please implement the first_letter/1 function
+    String.first(String.trim(name))
   end
 
   def initial(name) do
-    # Please implement the initial/1 function
+    first_letter(String.upcase(name)) <> "."
   end
 
   def initials(full_name) do
-    # Please implement the initials/1 function
+    names = String.split(full_name)
+    initial(List.first(names)) <> " " <> initial(List.last(names))
   end
 
   def pair(full_name1, full_name2) do
-    #      ******       ******
-    #    **      **   **      **
-    #  **         ** **         **
-    # **            *            **
-    # **                         **
-    # **     X. X.  +  X. X.     **
-    #  **                       **
-    #    **                   **
-    #      **               **
-    #        **           **
-    #          **       **
-    #            **   **
-    #              ***
-    #               *
-
-    # Please implement the pair/2 function
+    n1 = initials(full_name1)
+    n2 = initials(full_name2)
+    """
+         ******       ******
+       **      **   **      **
+     **         ** **         **
+    **            *            **
+    **                         **
+    **     #{n1}  +  #{n2}     **
+     **                       **
+       **                   **
+         **               **
+           **           **
+             **       **
+               **   **
+                 ***
+                  *
+    """
+  # for who are crazy thing that you need to use IO.puts()... You don't need =D
   end
 end
